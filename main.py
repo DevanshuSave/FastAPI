@@ -27,8 +27,8 @@ def rate_limit_handler(request: Request, exc: RateLimitExceeded):
 
 @app.post("/generate", response_model=LLMResponse)
 @limiter.limit("5/minute")
-def generate_text(request: PromptRequest):
-    response, latency = call_llm(request.prompt)
+def generate_text(prompt_request: PromptRequest):
+    response, latency = call_llm(prompt_request.prompt)
 
     return LLMResponse(
         response=response,
