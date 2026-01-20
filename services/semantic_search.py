@@ -3,7 +3,11 @@ from numpy.linalg import norm
 from services.embeddings_cache import get_cached_embedding
 
 def cosine_similarity(vec1, vec2):
-    return dot(vec1, vec2) / (norm(vec1) * norm(vec2))
+    norm1 = norm(vec1)
+    norm2 = norm(vec2)
+    if norm1 == 0 or norm2 == 0:
+        return 0.0
+    return dot(vec1, vec2) / (norm1 * norm2)
 
 def search(query: str, documents: list[str], top_k: int = 3):
     query_emb = get_cached_embedding(query)
