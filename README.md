@@ -37,7 +37,3 @@ The FastAPI app will be available at http://127.0.0.1:8000.
 
 ### 5. Test the API
 Open your browser and navigate to http://127.0.0.1:8000/docs to access the interactive API documentation and try out endpoints.
-
----
-
-Feel free to update this README with additional integration, usage, and deployment details as your project evolves.
