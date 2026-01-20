@@ -1,6 +1,6 @@
 import time
 import requests
-from app.config import OLLAMA_BASE_URL, OLLAMA_MODEL
+from config import OLLAMA_BASE_URL, OLLAMA_MODEL
 
 def call_llm(prompt: str) -> tuple[str, float]:
     start = time.time()

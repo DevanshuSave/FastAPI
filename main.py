@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from app.models.schemas import PromptRequest, LLMResponse
-from app.services.llm_service import call_llm
+from models.schemas import PromptRequest, LLMResponse
+from services.llm_service import call_llm
 
 app = FastAPI(title="Local LLM Service (Ollama)")
 
