@@ -27,8 +27,8 @@ def rate_limit_handler(request: Request, exc: RateLimitExceeded):
 
 @app.post("/generate", response_model=LLMResponse)
 @limiter.limit("5/minute")
-def generate_text(request: PromptRequest):
-    response, latency = call_llm(request.prompt)
+def generate_text(prompt_request: PromptRequest):
+    response, latency = call_llm(prompt_request.prompt)
 
     return LLMResponse(
         response=response,
@@ -46,6 +46,6 @@ documents = [
 
 @app.post("/search", response_model=SearchResponse)
 @limiter.limit("10/minute")
-def semantic_search_endpoint(request: QueryRequest):
-    results = search(request.query, documents, top_k=3)
+def semantic_search_endpoint(query_request: QueryRequest):
+    results = search(query_request.query, documents, top_k=3)
     return SearchResponse(results=results)
